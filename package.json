@@ -1,0 +1,40 @@
+{
+  "name": "neutral-tilt-graphics-react",
+  "version": "1.0.0",
+  "author": "swc19",
+  "license": "GPL-3.0",
+  "scripts": {
+    "watch:graphics": "npx parcel watch src/graphics/*.html --out-dir=graphics --public-url=.",
+    "build:graphics": "npx parcel build src/graphics/*.html --out-dir=graphics --public-url=.",
+    "watch": "npx concurrently 'npm:watch:*'",
+    "build": "npx concurrently 'npm:build:*'"
+  },
+  "nodecg": {
+    "compatibleRange": "^2.0.0",
+    "bundleDependencies": {},
+    "graphics": [
+      {
+        "file": "layout.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "thumbnail.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "react": "^18.2.0",
+    "react-admin": "^4.9.3",
+    "react-dom": "^18.2.0",
+    "react-fitty": "^1.0.1",
+    "styled-components": "^5.3.9"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "parcel-bundler": "^1.12.5"
+  }
+}
