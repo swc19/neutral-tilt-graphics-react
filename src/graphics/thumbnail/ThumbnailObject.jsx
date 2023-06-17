@@ -10,12 +10,14 @@ const NODECG_BUNDLE = 'nodecg-smashcontrol-react';
 
 export const ThumbnailObject = () => {
     const [setInfo] = useReplicant('setInfo', {}, {namespace: NODECG_BUNDLE});
+    const [thumbnailInfo] = useReplicant('thumbnailInfo', {}, {namespace: NODECG_BUNDLE});
     const [runPrint, setRunPrint]= useReplicant('runPrint', false, {namespace: NODECG_BUNDLE});
     const printRef = useRef();
 
-    function getChar(character){
+    function getChar(character, player){
+        const costume = player === 1 ? thumbnailInfo.player1costume : thumbnailInfo.player2costume;
         try{
-            return ssb64_images[character.split("[REMIX] ").at(-1)]['Default'];
+            return ssb64_images[character.split("[REMIX] ").at(-1)][costume];
         }
         catch (e){}
     }
@@ -51,8 +53,8 @@ export const ThumbnailObject = () => {
             <Printable ref={printRef}>
                 <BackgroundImage src={thumbnail_images['thumb-bg']}></BackgroundImage>
                 <Renders>
-                    <Player1Render src={getChar(setInfo.player1character)}></Player1Render>
-                    <Player2Render src={getChar(setInfo.player2character)}></Player2Render>
+                    <Player1Render src={getChar(setInfo.player1character, 1)}></Player1Render>
+                    <Player2Render src={getChar(setInfo.player2character, 2)}></Player2Render>
                 </Renders>
                 <ForegroundImage src={thumbnail_images['thumb-fg']}></ForegroundImage>
                 <Text>
