@@ -19,6 +19,16 @@
         "height": 1080
       },
       {
+        "file": "layout_escape_pod.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "layout_escape_pod_custom_robo.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "thumbnail.html",
         "width": 1920,
         "height": 1080
