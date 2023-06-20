@@ -64,8 +64,8 @@ export const ThumbnailObject = () => {
                     </PlayerTags>
                     <BracketLocation><ReactFitty maxSize={76}>{setInfo.bracketlocation}</ReactFitty></BracketLocation>
                     <TournamentInfo>
-                        <TournamentName><ReactFitty maxSize={84}>Neutral Tilt #7</ReactFitty></TournamentName>
-                        <TournamentDate><ReactFitty maxSize={84}>3/11/2023</ReactFitty></TournamentDate>
+                        <TournamentName><ReactFitty maxSize={84}>{thumbnailInfo.tourneyname}</ReactFitty></TournamentName>
+                        <TournamentDate><ReactFitty maxSize={84}>{thumbnailInfo.tourneydate}</ReactFitty></TournamentDate>
                     </TournamentInfo>
                 </Text>
             </Printable>
