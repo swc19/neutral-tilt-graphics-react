@@ -51,7 +51,11 @@ export const ThumbnailObject = () => {
     return (
         <Container>
             <Printable ref={printRef}>
-                <BackgroundImage src={thumbnail_images['thumb-bg']}></BackgroundImage>
+                {/* <BackgroundImage src={thumbnail_images['thumb-bg']}></BackgroundImage> */}
+                <BackgroundElements>
+                    <Player1Background port={setInfo.player1port}></Player1Background>
+                    <Player2Background port={setInfo.player2port}></Player2Background>
+                </BackgroundElements>
                 <Renders>
                     <Player1Render src={getChar(setInfo.player1character, 1)}></Player1Render>
                     <Player2Render src={getChar(setInfo.player2character, 2)}></Player2Render>
@@ -92,6 +96,48 @@ const BackgroundImage = styled.img`
     position: absolute;
     z-index: -10;
 `
+const BackgroundElements = styled.div`
+    display: grid;
+    position: absolute;
+    grid-template-columns: 1fr 1fr;
+    width: 1920px;
+    height: 865px;
+    top: 120px;
+
+`
+
+const Player1Background = styled.div`
+    background: ${props => {
+            switch(Number(props.port)){
+                case 1:
+                    return `linear-gradient(235deg, #ed3636 0%, #760000 100%);`
+                case 2:
+                    return `linear-gradient(235deg, #0070ff 0%, #003c79 100%);`
+                case 3:
+                    return `linear-gradient(235deg, #d6d600 0%, #afaf01 100%);`
+                case 4:
+                    return `linear-gradient(235deg, #4eb94e 0%, #209320 100%);`
+            }   
+        }
+    }}
+`
+
+const Player2Background = styled.div`
+background: ${props => {
+    switch(Number(props.port)){
+        case 1:
+            return `linear-gradient(135deg, #ed3636 0%, #760000 100%);`
+        case 2:
+            return `linear-gradient(135deg, #0070ff 0%, #003c79 100%);`
+        case 3:
+            return `linear-gradient(135deg, #d6d600 0%, #afaf01 100%);`
+        case 4:
+            return `linear-gradient(135deg, #4eb94e 0%, #209320 100%);`
+    }   
+}
+}}
+`
+
 const Renders = styled.div`
     position: absolute;
     display: grid;
