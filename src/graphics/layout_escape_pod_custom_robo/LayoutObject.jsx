@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactFitty } from "react-fitty";
-import layout_image from '../assets/layout/EP-Layout-CR.png';
+import layout_image from '../assets/layout/EP-Layout-CR-2024.png';
 import { useReplicant } from '../utils/hooks';
 import styled from 'styled-components';
 const NODECG_BUNDLE = 'nodecg-smashcontrol-react';
