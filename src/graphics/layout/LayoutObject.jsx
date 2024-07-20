@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import { ReactFitty } from "react-fitty";
 import layout_image from '../assets/layout/NT-Layout.png';
 import ssb64_images from '../assets/icons/ssb64/*.png'
@@ -9,7 +9,9 @@ const NODECG_BUNDLE = 'nodecg-smashcontrol-react';
 
 export const LayoutObject = () => {
     const [setInfo] = useReplicant('setInfo', {}, {namespace: NODECG_BUNDLE});
-
+	const handleGetImage = useCallback((character) => {
+		if(character){return ssb64_images[character.split("[REMIX] ").at(-1)];}
+	})
     return(
         <Container>
             <Background src={layout_image}></Background>
@@ -20,7 +22,7 @@ export const LayoutObject = () => {
                 <Port filled={Number(setInfo.player1port) === 4} portnum={4}></Port>
             </Player1Ports>
             <Player1Info>
-                <Player1Character src={ssb64_images[setInfo.player1character]}></Player1Character>
+                <Player1Character src={handleGetImage(setInfo.player1character)}></Player1Character>
                 <Player1Name><ReactFitty maxSize={48}>{setInfo.player1tag}</ReactFitty></Player1Name>
                 <Player1Score><ReactFitty maxSize={48}>{setInfo.player1score}</ReactFitty></Player1Score>
             </Player1Info>
@@ -31,7 +33,7 @@ export const LayoutObject = () => {
                 <Port filled={Number(setInfo.player2port) === 4} portnum={4}></Port>
             </Player2Ports>
             <Player2Info>
-                <Player2Character src={ssb64_images[setInfo.player2character]}></Player2Character>
+                <Player2Character src={handleGetImage(setInfo.player2character)}></Player2Character>
                 <Player2Name><ReactFitty maxSize={48}>{setInfo.player2tag}</ReactFitty></Player2Name>
                 <Player2Score><ReactFitty maxSize={48}>{setInfo.player2score}</ReactFitty></Player2Score>
             </Player2Info>
